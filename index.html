@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/images/free-icon-pet-care-2138440.png"/>
+    <title>Shelter</title>
+</head>
+<body>
+    <main>
+        <section class="headerAndStartScreen">
+            <header class="header">
+                <div class="logo">
+                    <h3 class="title">Cozy House</h2>
+                    <h4 class="subtitle">Shelter for pets in Boston</h3>
+                </div>
+                <nav class="navMenu">
+                    <a href='#aboutTheShelter' class="linkHeader link_active">About the shelter</a>
+                    <a href='#ourPets' class="linkHeader">Our pets</a>
+                    <a href='#helpTheShelter' class="linkHeader">Help the shelter</a>
+                    <a href='#contacts' class="linkHeader">Contacts</a>
+                </nav>
+                <button type="button" class="burger-button">
+                    <img src="assets/images/Burger.jpg" alt='button' ="img-burger">
+                </button>
+                <script>
+                    let burgerButton = document.querySelector('.burger-button');
+                    let navMenu = document.querySelector('.navMenu');
+                    burgerButton.onclick = function(){
+                      if(navMenu.classList.contains('navMenuFlex')){
+                        navMenu.classList.remove('navMenuFlex');
+                        burgerButton.style.transform = 'rotate(180deg)';
+                      } else {
+                        navMenu.classList.add('navMenuFlex');
+                        burgerButton.style.transform = 'rotate(90deg)';
+                      }
+                    }
+                </script>
+            </header>
+            <section class="startScreen">
+                <div class="startScreen_content">
+                    <div class="content">
+                        <h2 class="mainHeading">Not only people need a house</h1>
+                        <p class="subheading mainSubheading">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
+                        <a href='#ourPets' class="button_primary">Make a friend</a>
+                    </div>  
+                </div>
+                <img src="assets/images/start-screen-puppy.png" alt="puppy" class="start-screen-puppy">
+            </section>
+        </section>
+        <section class="about" id="aboutTheShelter">
+            <section class="about-content">
+                <img src="assets/images/about-pets.png" alt="dog_and_cat" class="about-pets">
+                <div class="contentAbout">
+                    <h3 class="heading">About the shelter “Cozy House”</h1>
+                    <p class="subheading aboutSubheading">Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
+                    <p class="subheading aboutSubheading">We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.</p>
+                </div>
+            </section>
+        </section>
+        <section class="pets" id="ourPets">
+            <script type="module">
+                import array_animals from './array_animals.js';
+                import Modal from './modal.js';
+                window.openModal = () => {
+                    let modal = new Modal(array_animals);
+                    modal.open();
+                    function setData(target_id){
+                        let result_object = array_animals.find(item => item.id == target_id);
+                        modal.setTitle(result_object.title);
+                        modal.setBody(document.createElement('div').innerHTML = result_object.text);
+                        modal.setImage(result_object.img);
+                    }
+                    setData(event.target.id);
+                }
+                
+            </script>
+            <section class="pets-content">
+                <h3 class="heading pets-heading">Our friends who are looking for a house</h1>
+                <div class="slider_container"></div>
+                <script type="module">
+                    import array_animals from './array_animals.js';
+                    import Slider from './slider.js';
+                    let slider = new Slider(array_animals);
+                    document.body.querySelector('.slider_container').append(slider.elem);
+                </script>
+                <button class="button_primary button_primary_pets">Get to know the rest</button>
+            </section>
+        </section>
+        <section class="help" id="helpTheShelter">
+            <section class="help-content">
+                <h3 class="heading heading_help">How you can help our shelter</h1>
+                <script type="module">
+                    import array_help_cards from './array_help_cards.js';
+                    import HelpCards from './help_cards.js';
+                    let helpCards = new HelpCards(array_help_cards);
+                    document.body.querySelector('.heading_help').after(helpCards.elem);
+                </script>
+            </section>
+        </section>
+        <section class="donation" id="contacts">
+            <section class="donation-content">
+                <img src="assets/images/donation-dog.png" alt="dog" class="imgDonationDog">
+                <section class="donation-section">
+                    <h1 class="heading donation-heading">You can also make a donation</h1>
+                    <p class="subheading donation-subheading">Name of the bank / Type of bank account</p>
+                    <section class="credit-card">
+                        <img src="assets/images/credit-card.png" alt="icon" class="icon-credit-card">
+                        <p class="credit-card-number">8380 2880 8028 8791 7435</p>
+                    </section>
+                    <p class="donation-description">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                </section>
+            </section>
+        </section>
+        <footer class="footer" id="footer">
+            <section class="footerContent">
+                <div class="footerContacts">
+                    <h2 class="footer-title">For questions and suggestions</h2>
+                    <div class="contactsAndIcons mail">
+                        <img src="assets/images/icon-email.png" alt="icon" class="img-mail">
+                        <p class="p-footer p-mail">email@shelter.com</p>
+                    </div>
+                    <div class="contactsAndIcons phone">
+                        <img src="assets/images/icon-phone.png" alt="icon" class="img-phone">
+                        <p class="p-footer p-phone">+13 674 567 75 54</p>
+                    </div>
+                </div>
+                <div class="locations">
+                    <h2 class="footer-title footer-title-locations">We are waiting for your visit</h2>
+                    <div class="contactsAndIcons Boston">
+                        <img src="assets/images/icon-marker.png" alt="icon" class="img-boston">
+                        <p class="p-footer p-boston">1 Central Street, Boston (entrance from the store)</p>
+                    </div>
+                    <div class="contactsAndIcons London">
+                        <img src="assets/images/icon-marker.png" alt="icon" class="img-london">
+                        <p class="p-footer p-london">18 South Park, London </p>
+                    </div>
+                </div>
+                <img src="assets/images/footer-puppy.png" alt="puppy" class="img-footer">
+            </section>
+           
+        </footer>
+    </main>
+</body>
+</html>
+
+
