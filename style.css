@@ -734,6 +734,9 @@
     .header{
         height: 90px;
     }
+    .subtitle{
+        display: none;
+    }
     .navMenu{
         width: 320px;
         height: 823px;
